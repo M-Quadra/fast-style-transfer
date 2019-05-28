@@ -3,7 +3,7 @@ import imageio
 
 def save_img(out_path, img):
     img = np.clip(img, 0, 255).astype(np.uint8)
-    scipy.misc.imsave(out_path, img)
+    imageio.imwrite(out_path, img)
 
 def scale_img(style_path, style_scale):
     scale = float(style_scale)
@@ -18,7 +18,7 @@ def get_img(src, img_size=False):
    if not (len(img.shape) == 3 and img.shape[2] == 3):
        img = np.dstack((img,img,img))
    if img_size != False:
-       img = scipy.misc.imresize(img, img_size)
+       img = np.array(Image.fromarray(img).resize(img_size[:2]))
    return img
 
 def exists(p, msg):
