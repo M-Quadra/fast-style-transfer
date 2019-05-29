@@ -1,5 +1,6 @@
 import scipy.misc, numpy as np, os, sys
 import imageio
+from PIL import Image
 
 def save_img(out_path, img):
     img = np.clip(img, 0, 255).astype(np.uint8)
